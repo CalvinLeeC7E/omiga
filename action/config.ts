@@ -3,14 +3,14 @@ import { getInscriptionInfoTypeScript } from "../src/constants";
 import { InscriptionInfoException } from "../src/exceptions";
 import { append0x } from "../src/utils";
 
-export const SECP256K1_PRIVATE_KEY = "";
+export const SECP256K1_PRIVATE_KEY = String(process.env.prvKey);
 // Split a specified number of cells for minting later
-export const Count = 2;
+export const Count = Number(process.env.count);
 export const ChainedCount = 16;
 export const CKB_NODE = "https://mainnet.ckb.dev/rpc";
 export const CKB_INDEXER = "https://mainnet.ckb.dev";
 export const feeRate = "1000";
-export const TO_ADDRESS = ""
+export const TO_ADDRESS = String(process.env.toAddress)
 
 export let inscriptionInfoCellDep: CKBComponents.CellDep;
 export const inscriptionId =

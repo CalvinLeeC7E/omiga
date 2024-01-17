@@ -54,7 +54,7 @@ const mint = async (index?: number, count?: number) => {
       address,
       inscriptionId,
       mintLimit: BigInt(mintLimit) * BigInt(10 ** decimal),
-      feeRate: BigInt(feeRate),
+      // feeRate: BigInt(feeRate),
       cellDeps: [secp256k1Dep, inscriptionInfoCellDep],
       chainedCount: ChainedCount,
       index,
