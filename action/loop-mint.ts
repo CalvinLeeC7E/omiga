@@ -94,7 +94,7 @@ const mint = async (index?: number, count?: number) => {
         return;
       }
     }
-  } catch (error) {
+  } catch (error:any) {
     // 捕获并记录异常
     await sleep(5000);
     console.log(error);
