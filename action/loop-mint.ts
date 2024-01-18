@@ -99,10 +99,6 @@ const mint = async (index?: number, count?: number) => {
     await sleep(5000);
     console.log(error);
     // 可以选择继续处理或者返回一个标志来表示出现了异常
-    if(error?.code == 204){
-      console.log("204 error, exit!!!");
-      process.exit(1);
-    }
   }
 };
 
