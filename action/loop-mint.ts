@@ -40,8 +40,9 @@ const mint = async (index?: number, count?: number) => {
     const decimal = 8;
     // 使用动态gasfee
     const feeRate = await collector.getFeeRate();
-    if(feeRate.median > `0x${BigInt(MaxFeeRate).toString(16)}`){
-      await sleep(100000)
+    let feeRateLimit = parseInt(feeRate.median);
+    if(feeRateLimit > MaxFeeRate){
+      feeRateLimit = MaxFeeRate;
     }
     const secp256k1Dep: CKBComponents.CellDep = {
       outPoint: {
@@ -57,7 +58,7 @@ const mint = async (index?: number, count?: number) => {
       address,
       inscriptionId,
       mintLimit: BigInt(mintLimit) * BigInt(10 ** decimal),
-      feeRate: BigInt(feeRate.median),
+      feeRate: BigInt(feeRateLimit),
       cellDeps: [secp256k1Dep, inscriptionInfoCellDep],
       chainedCount: ChainedCount,
       index,
@@ -97,16 +98,11 @@ const mint = async (index?: number, count?: number) => {
         return;
       }
     }
-  } catch (error:any) {
+  } catch (error) {
     // 捕获并记录异常
+    await sleep(5000);
     console.log(error);
     // 可以选择继续处理或者返回一个标志来表示出现了异常
-    if(error?.code == 204){
-      console.log("204 error, sleep!!!");
-      await sleep(3*60*1000);
-    }else{
-      await sleep(5000);
-    }
   }
 };
 
