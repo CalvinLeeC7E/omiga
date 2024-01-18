@@ -96,9 +96,14 @@ const mint = async (index?: number, count?: number) => {
     }
   } catch (error:any) {
     // 捕获并记录异常
-    await sleep(5000);
     console.log(error);
     // 可以选择继续处理或者返回一个标志来表示出现了异常
+    if(error?.code == 204){
+      console.log("204 error, sleep!!!");
+      await sleep(3*60*1000);
+    }else{
+      await sleep(5000);
+    }
   }
 };
 
