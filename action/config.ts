@@ -7,8 +7,8 @@ export const SECP256K1_PRIVATE_KEY = String(process.env.prvKey);
 // Split a specified number of cells for minting later
 export const Count = Number(process.env.count);
 export const ChainedCount = 16;
-export const CKB_NODE = "https://mainnet.ckb.dev/rpc";
-export const CKB_INDEXER = "https://mainnet.ckb.dev";
+export const CKB_NODE = "http://localhost:8114/rpc";
+export const CKB_INDEXER = "http://localhost:8114";
 export const MaxFeeRate = 30000;
 export const TO_ADDRESS = String(process.env.toAddress)
 export const Single= 200
